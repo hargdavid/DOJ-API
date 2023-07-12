@@ -1,13 +1,15 @@
 import express from "express";
 import { ContentController } from "../controllers/contentController";
 
-export const routePath = "/content";
+export const contentPath = "/content";
 export const contentRoutes = express.Router();
 
 /**
  * @openapi
  * /content:
  *   get:
+ *     tags:
+ *        - content
  *     description: Planets response
  *     responses:
  *       200:

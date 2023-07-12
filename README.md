@@ -1,6 +1,6 @@
 # API written in Node/Express/Typescript
 
-## Architechture
+## Architecture
 
 1. Client
 1. Routes

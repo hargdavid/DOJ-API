@@ -1,6 +1,10 @@
-import { contentRoutes, routePath } from "./contentRoutes";
+import { contentRoutes, contentPath } from "./contentRoutes";
 import { RouteObject } from "../model/types";
+import { userRoutes, userPath } from "./userRoutes";
 
-const routes: RouteObject[] = [{ path: routePath, routes: contentRoutes }];
+const routes: RouteObject[] = [
+  { path: contentPath, routes: contentRoutes },
+  { path: userPath, routes: userRoutes },
+];
 
 export default routes;
