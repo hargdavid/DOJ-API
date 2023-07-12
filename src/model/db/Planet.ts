@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { ObjectId } from "mongoDB";
 
 export interface Planet {
   name: string;
@@ -10,7 +10,7 @@ export interface Planet {
 }
 
 interface Temperature {
-  min: string | null;
-  max: string | null;
-  mean: string | number | null;
+  min: number | null;
+  max: number | null;
+  mean: number | null;
 }

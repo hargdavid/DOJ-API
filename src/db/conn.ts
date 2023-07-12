@@ -4,8 +4,6 @@ import { Planet } from "../model/db/Planet";
 export const collections: { planets?: mongodb.Collection<Planet> } = {};
 
 export async function connectToDatabase() {
-  // Pulls in the .env file so it can be accessed from process.env. No path as .env is in root, the default locatio
-
   // Create a new mongodb client with the connection string from .env
   const client = new mongodb.MongoClient(
     process.env.DB_CONNECTION_STRING ?? ""

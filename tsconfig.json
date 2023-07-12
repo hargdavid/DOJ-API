@@ -10,7 +10,10 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "moduleResolution": "nodenext"
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "ts-node": {
     "compilerOptions": {
