@@ -1,7 +1,8 @@
 import * as mongodb from "mongoDB";
 import { Planet } from "../model/db/Planet";
+import { User } from "../model/db/User";
 
-export const collections: { planets?: mongodb.Collection<Planet> } = {};
+export const collections: { user?: mongodb.Collection<User> } = {};
 
 export async function connectToDatabase() {
   // Create a new mongodb client with the connection string from .env
@@ -19,15 +20,15 @@ export async function connectToDatabase() {
   await applySchemaValidation(db);
 
   // Connect to the collection with the specific name from .env, found in the database previously specified
-  const planetsCollection = db.collection<Planet>(
+  const userCollection = db.collection<User>(
     process.env.PLANET_COLLECTION_NAME ?? ""
   );
 
   // Persist the connection to the Planets collection
-  collections.planets = planetsCollection;
+  collections.user = userCollection;
 
   console.log(
-    `Successfully connected to database: ${db.databaseName} and collection: ${planetsCollection.collectionName}`
+    `Successfully connected to database: ${db.databaseName} and collection: ${userCollection.collectionName}`
   );
 }
 

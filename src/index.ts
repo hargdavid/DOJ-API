@@ -11,6 +11,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 connectToDatabase().then(() => {
+  app.use(express.json());
+
   routes.forEach((route: RouteObject) => {
     app.use(route.path, route.routes);
   });

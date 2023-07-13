@@ -1,9 +1,10 @@
-import { UserRole } from "../dto/UserDto";
+import { ObjectId } from "mongoDB";
 
 export interface User {
-  name: string;
-  surname: string;
+  firstName: string;
+  surName: string;
+  userId?: number;
   email: string;
-  role: UserRole;
-  id?: string;
+  role: number;
+  id?: ObjectId;
 }

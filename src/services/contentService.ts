@@ -4,7 +4,7 @@ import { mapPlanetToDto } from "../model/mappers/mapPlanet";
 
 export class ContentService implements IContentService {
   static async getContent() {
-    const planets = await collections.planets?.find({}).toArray();
-    return planets?.map(mapPlanetToDto);
+    // const planets = await collections.user?.find({}).toArray();
+    //return planets?.map(mapPlanetToDto);
   }
 }

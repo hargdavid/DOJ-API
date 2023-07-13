@@ -1,3 +1,5 @@
+import { UserRole } from "../enums/UserRole";
+
 /**
  * @openapi
  * components:
@@ -5,23 +7,44 @@
  *    User:
  *      type: object
  *      properties:
- *        name:
+ *        firstName:
  *          type: string
- *        surname:
+ *        surName:
  *          type: string
+ *        userId:
+ *          required: false
+ *          type: number
  *        email:
  *          type: string
  *        role:
  *          type: string
  */
-
 export interface UserDto {
-  name: string;
-  surname: string;
+  firstName: string;
+  surName: string;
+  userId?: number;
   email: string;
   role: UserRole;
 }
 
-export enum UserRole {
-  Admin = "Admin",
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    CreateUserDto:
+ *      type: object
+ *      properties:
+ *        firstName:
+ *          type: string
+ *        surName:
+ *          type: string
+ *        email:
+ *          type: string
+ *        role:
+ *          type: string
+ *        password:
+ *          type: string
+ */
+export interface CreateUserDto extends UserDto {
+  password: string;
 }
