@@ -1,8 +1,11 @@
 import * as mongodb from "mongoDB";
-import { Planet } from "../model/db/Planet";
 import { User } from "../model/db/User";
+import { Register } from "../model/db/Register";
 
-export const collections: { user?: mongodb.Collection<User> } = {};
+export const collections: {
+  user?: mongodb.Collection<User>;
+  registrated?: mongodb.Collection<Register>;
+} = {};
 
 export async function connectToDatabase() {
   // Create a new mongodb client with the connection string from .env
@@ -21,14 +24,21 @@ export async function connectToDatabase() {
 
   // Connect to the collection with the specific name from .env, found in the database previously specified
   const userCollection = db.collection<User>(
-    process.env.PLANET_COLLECTION_NAME ?? ""
+    process.env.USER_COLLECTION_NAME ?? ""
+  );
+
+  const registerCollection = db.collection<Register>(
+    process.env.REGISTER_COLLECTION_NAME ?? ""
   );
 
   // Persist the connection to the Planets collection
   collections.user = userCollection;
+  collections.registrated = registerCollection;
 
   console.log(
-    `Successfully connected to database: ${db.databaseName} and collection: ${userCollection.collectionName}`
+    `Successfully connected to database: ${db.databaseName} and collection: ${
+      (userCollection.collectionName, registerCollection.collectionName)
+    }`
   );
 }
 
@@ -61,12 +71,12 @@ async function applySchemaValidation(db: mongodb.Db) {
   // Try applying the modification to the collection, if the collection doesn't exist, create it
   await db
     .command({
-      collMod: process.env.PlanetS_COLLECTION_NAME,
+      collMod: process.env.USER_COLLECTION_NAME,
       validator: jsonSchema,
     })
     .catch(async (error: mongodb.MongoServerError) => {
       if (error.codeName === "NamespaceNotFound") {
-        await db.createCollection(process.env.PlanetS_COLLECTION_NAME ?? "", {
+        await db.createCollection(process.env.USER_COLLECTION_NAME ?? "", {
           validator: jsonSchema,
         });
       }

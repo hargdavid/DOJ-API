@@ -1,7 +1,11 @@
+import { collections } from "../db/conn";
 import { User } from "../model/db/User";
+import { IUserService } from "../model/services/IUserService";
 
 export class UserService implements IUserService {
-  static createUser(user: User) {}
+  public static createUser = async (user: User) => {
+    return await collections.user?.insertOne(user);
+  };
   static getUser() {}
   static updateUser() {}
   static login() {}

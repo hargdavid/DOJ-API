@@ -2,15 +2,22 @@ import { Request, Response } from "express";
 import { IUserController } from "../model/controllers/IUserController";
 import { CreateUserDto } from "../model/dto/UserDto";
 import { validateCreateUser } from "../helpers/validations/validateUser";
+import { UserService } from "../services/userService";
 
 export class UserController implements IUserController {
-  static createUser(req: Request, res: Response) {
-    const body: CreateUserDto = req.body;
+  public static createUser = async (req: Request, res: Response) => {
+    try {
+      const body: CreateUserDto = req.body;
 
-    const { user, password } = validateCreateUser(body);
+      const { user, password } = validateCreateUser(body);
 
-    console.log("body", body);
+      await UserService.createUser(user);
 
-    res.status(203).send("Created");
-  }
+      console.log("body", body);
+
+      res.status(203).send("Created");
+    } catch (error) {
+      res.status(400).send("Bad Request");
+    }
+  };
 }

@@ -1,6 +1,5 @@
 import { User } from "../../model/db/User";
 import { CreateUserDto } from "../../model/dto/UserDto";
-import { UserRole } from "../../model/enums/UserRole";
 import { convertUserRoleToNumber } from "../converters/userRole";
 
 export const validateCreateUser = (
