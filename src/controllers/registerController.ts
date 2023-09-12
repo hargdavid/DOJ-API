@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { UserService } from "../services/userService";
 import { IRegisterController } from "../model/controllers/IRegisterController";
 import { RegisterDto } from "../model/dto/RegisterDto";
 import { RegisterService } from "../services/registerService";
@@ -14,6 +13,16 @@ export class RegisterController implements IRegisterController {
       console.log("body", body);
 
       res.status(203).send("Created");
+    } catch (error) {
+      res.status(400).send("Bad Request");
+    }
+  };
+
+  public static getRegistered = async (req: Request, res: Response) => {
+    try {
+      const response = await RegisterService.getRegistered();
+
+      res.status(200).send(response);
     } catch (error) {
       res.status(400).send("Bad Request");
     }

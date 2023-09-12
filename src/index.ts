@@ -6,9 +6,12 @@ import { RouteObject } from "./model/types";
 import { connectToDatabase } from "./db/conn";
 import swaggerUi from "swagger-ui-express";
 import { swaggerDoc } from "./swagger/swagger";
+import cors from "cors";
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+app.use(cors());
 
 connectToDatabase().then(() => {
   app.use(express.json());

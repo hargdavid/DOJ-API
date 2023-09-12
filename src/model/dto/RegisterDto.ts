@@ -7,18 +7,26 @@
  *      properties:
  *        name:
  *          type: string
- *        orderFromSun:
- *          type: number
- *        hasRings:
+ *        email:
+ *          type: string
+ *        dietPreferences:
  *          type: boolean
- *        mainAtmosphere:
- *          type: array
- *          items:
- *            type: string
- *        surfaceTemperatureC:
- *          $ref: '#/components/schemas/Temperature'
+ *        attending:
+ *          type: number
+ *        typeOfDiet:
+ *          type: string
  */
 
 export interface RegisterDto {
   name: string;
+  email: string;
+  dietPreferences: boolean;
+  attending: AttendingDays;
+  typeOfDiet: string;
+}
+
+export enum AttendingDays {
+  FRISUN,
+  SATSUN,
+  SAT,
 }
