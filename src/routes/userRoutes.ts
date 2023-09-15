@@ -1,5 +1,4 @@
 import express from "express";
-import { ContentController } from "../controllers/contentController";
 import { UserController } from "../controllers/userController";
 
 export const userPath = "/user";
