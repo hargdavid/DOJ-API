@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "NodeNext",
     "target": "esnext",
     "noImplicitAny": true,
     "removeComments": true,
@@ -13,13 +13,14 @@
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "outDir": "./dist"
   },
   "ts-node": {
     "compilerOptions": {
       "module": "commonjs"
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/index.ts"],
   "exclude": ["**/*.spec.ts", "node_modules"]
 }

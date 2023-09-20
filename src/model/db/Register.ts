@@ -1,4 +1,5 @@
-import { ObjectId } from "mongoDB";
+import { ObjectId } from "mongodb";
+import mongoose from "mongoose";
 
 export interface Register {
   name: string;
@@ -8,3 +9,16 @@ export interface Register {
   typeOfDiet: string;
   id?: ObjectId;
 }
+
+const RegisterSchema = new mongoose.Schema(
+  {
+    name: String,
+    email: String,
+    dietPreferences: Boolean,
+    attending: Number,
+    typeOfDiet: String,
+  },
+  { collection: "registrated" }
+);
+
+export const RegisterModel = mongoose.model("registrated", RegisterSchema);

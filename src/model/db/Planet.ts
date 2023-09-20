@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoDB";
+import { ObjectId } from "mongodb";
 
 export interface Planet {
   name: string;

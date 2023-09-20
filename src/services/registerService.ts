@@ -1,5 +1,4 @@
-import { collections } from "../db/conn";
-import { Register } from "../model/db/Register";
+import { Register, RegisterModel } from "../model/db/Register";
 import { RegisterDto } from "../model/dto/RegisterDto";
 
 export class RegisterService {
@@ -13,14 +12,14 @@ export class RegisterService {
         typeOfDiet: register.typeOfDiet,
       };
 
-      return await collections.registrated?.insertOne(registerDb);
+      return await RegisterModel.create(registerDb);
     } catch (error) {
       throw error;
     }
   };
   public static getRegistered = async () => {
     try {
-      const response = await collections.registrated?.find({}).toArray();
+      const response = await RegisterModel.find({});
 
       return response?.map((register) => ({
         name: register.name,

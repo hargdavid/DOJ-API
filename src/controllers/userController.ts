@@ -13,8 +13,6 @@ export class UserController implements IUserController {
 
       await UserService.createUser(user);
 
-      console.log("body", body);
-
       res.status(203).send("Created");
     } catch (error) {
       res.status(400).send("Bad Request");
